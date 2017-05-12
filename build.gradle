@@ -28,6 +28,7 @@ dependencies {
 
 compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 
-	
+
+compile('net.sourceforge.nekohtml:nekohtml:1.9.22')	
 testCompile('org.springframework.boot:spring-boot-starter-test')
 }
