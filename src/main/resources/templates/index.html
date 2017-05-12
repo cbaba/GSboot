@@ -152,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" style="padding-left:0px;padding-right:0px;margin-top:14px;">
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <div class="carousel slide" id="carousel-379795">
@@ -161,11 +161,14 @@
                             </li>
                             <li data-slide-to="1" data-target="#carousel-379795">
                             </li>
-                            <li data-slide-to="2" data-target="#carousel-379795" class="active">
+                            <li data-slide-to="2" data-target="#carousel-379795">
+                            </li>
+                            <li data-slide-to="3" data-target="#carousel-379795" class="active">
                             </li>
                         </ol>
                         <div class="carousel-inner">
                             <div class="item">
+                                <!-- spring boot 默认映射 /** 到 static 目录下 -->
                                 <img alt="" th:src="@{'../Image/1.jpg'}" />
                                 <div class="carousel-caption">
                                     <h4>
@@ -187,7 +190,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="item active">
+                            <div class="item">
                                 <img alt="" th:src="@{'../Image/3.jpg'}" />
                                 <div class="carousel-caption">
                                     <h4>
@@ -198,7 +201,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="item">
+                            <div class="item active">
                                 <img alt="" th:src="@{'../Image/4.jpg'}" />
                                 <div class="carousel-caption">
                                     <h4>
