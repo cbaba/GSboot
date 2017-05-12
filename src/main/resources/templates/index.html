@@ -3,6 +3,17 @@
     <head>
         <title>这是我的第一个 Thymeleaf 模板</title>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+        <!--
+            nitial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放。
+            在移动设备浏览器上，通过为 viewport meta 标签添加 user-scalable=no 可以禁用其缩放（zooming）功能。
+            通常情况下，maximum-scale=1.0 与 user-scalable=no 一起使用。这样禁用缩放功能后，用户只能滚动屏幕，就能让您的网站看上去更像原生应用的感觉。
+        -->
+        <meta name="viewport" content="width=device-width,
+                                  initial-scale=1.0,
+                                  maximum-scale=1.0,
+                                  user-scalable=no">
+        <title>欢迎来到 LongXia 吧</title>
+
         <!-- 新 Bootstrap 核心 CSS 文件 -->
         <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -14,14 +25,55 @@
 
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+   		//启动函数
+   		$(function(){
+   			//$(".nav-tabs li:first").addClass("active");	//默认让一级分类的第一项选中
+   			$(".nav-tabs a:first").click();
+   		});
+   		//一键换肤函数
+   		var i = 133;
+   		function changebackground(){
+   			$("body").css({"background-image":"url('https://ss0.bdstatic.com/k4oZeXSm1A5BphGlnYG/skin/"+i+".jpg?2","background-size": "100% 100%"});
+   			i++;
+   		}
+   		//function showBar(ctNum){  没屌用
+   		//	var barHtml =
+   		//				+  "<c:forEach items='${allBar }' var='ab' varStatus='vs'>"
+		//				+		"<c:if test='${vs.current.barCategorTwo.id==1}'>"
+		//				+			"<h4>${ab.name }</h4>"
+		//				+		"</c:if>"
+		//				+  "</c:forEach>";
+		//	$("#showBarArea").html(barHtml);
+
+   		//}
+        </script>
+
+        <!--<link href="~/Css/amazeui.css" rel="stylesheet" />
+        <link href="~/Css/amazeui.flat.css" rel="stylesheet" />
+        <script src="~/Scripts/amazeui.js"></script>
+        <link href="~/Css/amazeui.page.css" rel="stylesheet" />
+        <link href="~/Css/bootstrap.css" rel="stylesheet" />
+        <link href="~/Css/min.css" rel="stylesheet" />
+        <script src="~/Scripts/amazeui.page.js"></script>
+        <script src="~/Scripts/amazeui.page.js"></script>
+        <link href="~/Css/font-awesome.css" rel="stylesheet" />
+        <link href="~/Css/stickyheader.css" rel="stylesheet" />
+        <script src="~/Scripts/orca-pager.js"></script>
+        <script src="~/Scripts/orca-stickytable.js"></script>
+        <script src="~/Scripts/jquery.ba-throttle-debounce.min.js"></script>
+        <script src="~/Scripts/jquery.dataTables.js"></script>
+        <script src="~/Scripts/jquery.droptabs.js"></script>-->
     </head>
-    <body>
+    <body style="background-color:rgb(64, 64, 64);background-image:url('https://ss0.bdstatic.com/k4oZeXSm1A5BphGlnYG/skin/70.jpg?2'); background-size: '100% 100%';background-repeat:no-repeat;background-attachment:fixed;">
+        <!-- 由于内边距（padding）是固定宽度，默认情况下容器是不可嵌套的。 -->
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
                         <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">LongXia</a>
                         </div>
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -60,30 +112,38 @@
                             <form class="navbar-form navbar-left" role="search">
                                 <div class="form-group">
                                     <input type="text" class="form-control" />
-                                </div> <button type="submit" class="btn btn-default">Submit</button>
+                                </div> <button type="submit" class="btn btn-default btn-success">进入贴吧</button>
                             </form>
                             <ul class="nav navbar-nav navbar-right">
+                                <c:choose>
+                                    <c:when test="${sessionScope.currentUser==null }">
+                                        <li>
+                                            <a href="${pageContext.request.contextPath }/login">登录</a>
+                                        </li>
+                                        <li>
+                                            <a href="${pageContext.request.contextPath }/registry">注册</a>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li>
+                                            <a href="#">
+                                                <img src="${pageContext.request.contextPath }/image/head.jpg" style="height: 23px;width: 23px;padding: 0px;" class="img-responsive img-circle" alt="响应式图像">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${currentUser.nickname}</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">个人信息</a></li>
+                                                <li><a href="#">积分商城</a></li>
+                                                <li><a href="#">粉丝</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="javascript:void(0)" onclick="exit()">退出</a></li>
+                                            </ul>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
                                 <li>
-                                    <a href="#">Link</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">Action</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Another action</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider">
-                                        </li>
-                                        <li>
-                                            <a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
+                                    <a href="javascript:void(0)" onclick="changebackground()">一键换肤</a>
                                 </li>
                             </ul>
                         </div>
@@ -128,6 +188,39 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- 遮罩面板
+            <div class="container">
+	            <div class="row clearfix">
+		            <div class="col-md-12 column">
+			             <a id="modalforlogin" href="#modal-container-login" role="button" class="btn" data-toggle="modal" style="display:none;">触发遮罩窗体</a>
+			            <div class="modal fade" id="modal-container-login" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				            <div class="modal-dialog">
+					            <div class="modal-content" style="margin-top:150px;">
+						            <div class="modal-header">
+							             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							            <h4 class="modal-title" id="myModalLabel">
+								            提示信息
+							            </h4>
+						            </div>
+						            <div class="modal-body"></div>
+						            <div class="modal-footer">
+							             <button id="close" type="button" class="btn btn-default" data-dismiss="modal">关闭</button> 
+						            </div>
+					            </div>
+					
+				            </div>
+				
+			            </div>
+			
+		            </div>
+	            </div>
+            </div>    
+        -->
+
+
+
 
     </body>
 
