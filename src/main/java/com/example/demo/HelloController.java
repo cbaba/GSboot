@@ -14,5 +14,7 @@ public class HelloController {
     String home(Model model) {
 	model.addAttribute("name",name);
         return "index";
+
+
     }
 }
