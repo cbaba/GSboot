@@ -1,0 +1,360 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>这是我的第一个 Thymeleaf 模板</title>
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+        <!--
+            nitial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放。
+            在移动设备浏览器上，通过为 viewport meta 标签添加 user-scalable=no 可以禁用其缩放（zooming）功能。
+            通常情况下，maximum-scale=1.0 与 user-scalable=no 一起使用。这样禁用缩放功能后，用户只能滚动屏幕，就能让您的网站看上去更像原生应用的感觉。
+        -->
+        <meta name="viewport" content="width=device-width,
+                                  initial-scale=1.0,
+                                  maximum-scale=1.0,
+                                  user-scalable=no">
+        <title>欢迎来到 LongXia 吧</title>
+
+        <!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- 可选的Bootstrap主题文件（一般不使用） -->
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+   		//启动函数
+   		$(function(){
+   			//$(".nav-tabs li:first").addClass("active");	//默认让一级分类的第一项选中
+   			$(".nav-tabs a:first").click();
+   		});
+   		//一键换肤函数
+   		var i = 133;
+   		function changebackground(){
+   			$("body").css({"background-image":"url('https://ss0.bdstatic.com/k4oZeXSm1A5BphGlnYG/skin/"+i+".jpg?2","background-size": "100% 100%"});
+   			i++;
+   		}
+   		//function showBar(ctNum){  没屌用
+   		//	var barHtml =
+   		//				+  "<c:forEach items='${allBar }' var='ab' varStatus='vs'>"
+		//				+		"<c:if test='${vs.current.barCategorTwo.id==1}'>"
+		//				+			"<h4>${ab.name }</h4>"
+		//				+		"</c:if>"
+		//				+  "</c:forEach>";
+		//	$("#showBarArea").html(barHtml);
+
+   		//}
+        </script>
+
+        <!--<link href="~/Css/amazeui.css" rel="stylesheet" />
+        <link href="~/Css/amazeui.flat.css" rel="stylesheet" />
+        <script src="~/Scripts/amazeui.js"></script>
+        <link href="~/Css/amazeui.page.css" rel="stylesheet" />
+        <link href="~/Css/bootstrap.css" rel="stylesheet" />
+        <link href="~/Css/min.css" rel="stylesheet" />
+        <script src="~/Scripts/amazeui.page.js"></script>
+        <script src="~/Scripts/amazeui.page.js"></script>
+        <link href="~/Css/font-awesome.css" rel="stylesheet" />
+        <link href="~/Css/stickyheader.css" rel="stylesheet" />
+        <script src="~/Scripts/orca-pager.js"></script>
+        <script src="~/Scripts/orca-stickytable.js"></script>
+        <script src="~/Scripts/jquery.ba-throttle-debounce.min.js"></script>
+        <script src="~/Scripts/jquery.dataTables.js"></script>
+        <script src="~/Scripts/jquery.droptabs.js"></script>-->
+    </head>
+    <body style="background-color:rgb(64, 64, 64);background-image:url('https://ss0.bdstatic.com/k4oZeXSm1A5BphGlnYG/skin/70.jpg?2'); background-size: '100% 100%';background-repeat:no-repeat;background-attachment:fixed;">
+        <!-- 由于内边距（padding）是固定宽度，默认情况下容器是不可嵌套的。 -->
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">LongXia</a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="#">Link</a>
+                                </li>
+                                <li>
+                                    <a href="#">Link</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li>
+                                            <a href="#">Separated link</a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li>
+                                            <a href="#">One more separated link</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" />
+                                </div> <button type="submit" class="btn btn-default btn-success">进入贴吧</button>
+                            </form>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="${pageContext.request.contextPath }/login">登录</a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath }/registry">注册</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img th:src="@{'../Image/head.jpg'}" style="height: 23px;width: 23px;padding: 0px;" class="img-responsive img-circle" alt="响应式图像">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">gongtao</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">个人信息</a></li>
+                                        <li><a href="#">积分商城</a></li>
+                                        <li><a href="#">粉丝</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:void(0)" onclick="exit()">退出</a></li>
+                                    </ul>
+                                </li>
+                                <!--<c:choose>-->
+                                    <!--<c:when test="${sessionScope.currentUser==null }">-->
+                                        <!--<li>-->
+                                            <!--<a href="${pageContext.request.contextPath }/login">登录</a>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<a href="${pageContext.request.contextPath }/registry">注册</a>-->
+                                        <!--</li>-->
+                                    <!--</c:when>-->
+                                    <!--<c:otherwise>-->
+                                        <!--<li>-->
+                                            <!--<a href="#">-->
+                                                <!--<img th:src="@{'../Image/head.jpg'}" style="height: 23px;width: 23px;padding: 0px;" class="img-responsive img-circle" alt="响应式图像">-->
+                                            <!--</a>-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">gongtao</a>-->
+                                            <!--<ul class="dropdown-menu">-->
+                                                <!--<li><a href="#">个人信息</a></li>-->
+                                                <!--<li><a href="#">积分商城</a></li>-->
+                                                <!--<li><a href="#">粉丝</a></li>-->
+                                                <!--<li class="divider"></li>-->
+                                                <!--<li><a href="javascript:void(0)" onclick="exit()">退出</a></li>-->
+                                            <!--</ul>-->
+                                        <!--</li>-->
+                                    <!--</c:otherwise>-->
+                                <!--</c:choose>-->
+                                <li>
+                                    <a href="javascript:void(0)" onclick="changebackground()">一键换肤</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="width:1024px; padding-left:0px;padding-right:0px;margin-top:14px;">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="carousel slide" id="carousel-379795">
+                        <ol class="carousel-indicators">
+                            <li data-slide-to="0" data-target="#carousel-379795">
+                            </li>
+                            <li data-slide-to="1" data-target="#carousel-379795">
+                            </li>
+                            <li data-slide-to="2" data-target="#carousel-379795">
+                            </li>
+                            <li data-slide-to="3" data-target="#carousel-379795" class="active">
+                            </li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <!-- spring boot 默认映射 /** 到 static 目录下 -->
+                                <img alt="" th:src="@{'../Image/1.jpg'}"/>
+                                <div class="carousel-caption">
+                                    <h4>
+                                        First Thumbnail label
+                                    </h4>
+                                    <p>
+                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img alt="" th:src="@{'../Image/2.jpg'}"  />
+                                <div class="carousel-caption">
+                                    <h4>
+                                        Second Thumbnail label
+                                    </h4>
+                                    <p>
+                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img alt="" th:src="@{'../Image/3.jpg'}"/>
+                                <div class="carousel-caption">
+                                    <h4>
+                                        Third Thumbnail label
+                                    </h4>
+                                    <p>
+                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item active">
+                                <img alt="" th:src="@{'../Image/4.jpg'}" />
+                                <div class="carousel-caption">
+                                    <h4>
+                                        First Thumbnail label
+                                    </h4>
+                                    <p>
+                                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                    </p>
+                                </div>
+                            </div>
+                        </div> <a class="left carousel-control" href="#carousel-379795" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-379795" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<h1 th:text="'HELLO，'+${name}+'!!!'">默认姓名</h1>-->
+
+        <!-- 查询区域 -->
+        <!--<div class="am-g am-u-sm-centered" style="width:600px;margin-top:50px;">
+            <div class="am-form-group">
+                <input type="text" class="am-form-field am-radius" placeholder="请输入关键字" id="keyword"/>
+            </div>
+            <button type="submit" class="am-btn am-btn-success" onclick="search()">查询</button>
+        </div>
+
+        <input type="hidden" id="hidSelectedPK" />
+
+        <button type="submit" class="am-btn am-btn-success" onclick="search()">@Html.ActionLink("新增", "Create")</button>-->
+
+        <!-- 分页表格结构 -->
+        <!--<div class="panel-body" id="sticky-pager-panel">
+            <div id="sticky-page-header"></div>
+            <div id="sticky-table-body"></div>
+            <div id="sticky-page-footer"></div>
+        </div>-->
+
+        <!-- 模态窗口 -->
+        <!--<button type="button"
+                id="btnShowFunctionMenu"
+                style="display:none;"
+                data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0, width: 550, height: 225}"></button>
+        <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+            <div class="am-modal-dialog">
+                <div class="am-modal-bd">
+                    <button type="button" class="am-btn am-btn-default am-btn-block am-btn-xl" onclick="EditUser()">编辑</button>
+                    <button type="button" class="am-btn am-btn-default am-btn-block am-btn-xl" onclick="FrozenUser()">停用</button>
+                    <button type="button" class="am-btn am-btn-default am-btn-block am-btn-xl" onclick="DeleteUser()">删除</button>
+                    <button type="button" class="am-btn am-btn-default am-btn-block am-btn-xl" data-am-modal-close>退出</button>
+                </div>
+            </div>
+        </div>-->
+
+
+        <!-- 遮罩面板
+            <div class="container">
+	            <div class="row clearfix">
+		            <div class="col-md-12 column">
+			             <a id="modalforlogin" href="#modal-container-login" role="button" class="btn" data-toggle="modal" style="display:none;">触发遮罩窗体</a>
+			            <div class="modal fade" id="modal-container-login" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				            <div class="modal-dialog">
+					            <div class="modal-content" style="margin-top:150px;">
+						            <div class="modal-header">
+							             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							            <h4 class="modal-title" id="myModalLabel">
+								            提示信息
+							            </h4>
+						            </div>
+						            <div class="modal-body"></div>
+						            <div class="modal-footer">
+							             <button id="close" type="button" class="btn btn-default" data-dismiss="modal">关闭</button> 
+						            </div>
+					            </div>
+					
+				            </div>
+				
+			            </div>
+			
+		            </div>
+	            </div>
+            </div>    
+        -->
+
+    </body>
+
+</html>
+
+<script>
+    //初始化表格
+    //var pagerUserFun = $("#sticky-pager-panel").orca_pager_init({
+    //    elements: {
+    //        header: $("#sticky-page-header"),
+    //        footer: $("#sticky-page-footer")
+    //    },
+    //    url: "/User/GetUser",
+    //    postdata: function () {
+    //        return {
+    //            keyword: $("#keyword").val(),      //关键字
+    //            type: "1",
+    //            oResult: $("#oResult").val(),       //状态条件
+    //        };
+    //    },
+    //    onupdate: function (data) {
+    //        orca_sticky_table(
+    //            $("#sticky-table-body"),
+    //            {
+    //                data: data,
+    //                stickyable_columns_count: 1,
+    //                columns: [
+    //                    { title: "用户PK", align: 'center', field: 'PK' }
+    //                , { title: "UserId", field: 'USERID' }
+    //                , { title: "邮箱", field: 'EMAIL' }
+    //                , { title: "生日", field: 'birthday' }
+    //                , {
+    //                    title: "管理", align: 'center',
+    //                    render: function (row, index) {
+    //                                return "<a class='btn btn-default' " +
+    //                                "onclick='SendFunctionMenu(" + row.PK + ");' role='button'>" + "管理" + "</a></div>";
+    //                            }
+    //                    }
+    //                ]
+    //            });
+    //    }
+    //});
+    //function EditUser(pk){
+    //    location.href = "/User/Details?id=" + $("#hidSelectedPK").val();
+    //}
+    //function SendFunctionMenu(pk) {
+    //    $("#hidSelectedPK").val(pk);
+    //    $("#btnShowFunctionMenu").click();
+    //}
+    //function search() {
+    //    pagerUserFun.orca_pager_update(0);
+    //}
+</script>
