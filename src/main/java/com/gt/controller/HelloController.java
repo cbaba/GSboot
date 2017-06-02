@@ -86,6 +86,13 @@ public class HelloController {
 
     }
 
+    @RequestMapping(value="index",method=RequestMethod.GET)
+    public String index() throws SQLException {
+        return "index";
+
+    }
+
+
     @RequestMapping(value="login",method=RequestMethod.GET)
     public String loginForm() throws SQLException {
         User user = new User();
