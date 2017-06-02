@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.gt.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="errorModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h1>出错啦！！！</h1>
+<div app-controller="errorController">
+    {{ [{'name':'gongtao','age':'23'},{'name':'mahang','age':'23'},{'name':'sunbowen','age':'23'}] | filter:{'name':'gongtao'} }}
+    {{ ['a','b','c','d','e','f','g'] | limitTo:2 }}
+    {{ 'woshiyigehaoren' | limitTo:4 }}
+    {{ 123456789 | number }}
+    {{ [{'name':'a','age':'10'},{'name':'b','age':'9'},{'name':'c','age':'8'}] | orderBy:'name':true}}
+
+    {{ 'my Name Is Gongao' | lowercase | capitalize }}
+
+    <form action="exit" method="post" novalidate>
+        <input type="text"  />
+        <input type="button" value="登陆"/>
+    </form>
+</div>
+</body>
+<script th:src="@{/assets/js/angular.js}"></script>
+<script type="application/javascript">
+    angular.module('errorModule',[]).filter('capitalize',function(){
+        return function(input){
+            if(input){
+                return input[0].toUpperCase()+input.slice(1);
+            }
+        }
+    }).controller('errorController',function($scope){
+
+    });
+
+
+
+</script>
+</html>

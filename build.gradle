@@ -31,6 +31,16 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	//添加 spring-data-jpa 依赖
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	//添加 spring-security
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile('com.h2database:h2')
+	//添加 使用 jdbcTemplate
+//	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	//添加 c3p0 数据库连接池依赖
+//	compile('com.mchange:c3p0:0.9.5.2')
+	compile('mysql:mysql-connector-java:6.0.6')
 	compile('net.sourceforge.nekohtml:nekohtml:1.9.22')
 	compile('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')

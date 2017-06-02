@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="myIndexModule">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,15 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="icon" type="image/png" href="assets/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" th:href="@{/assets/i/favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/assets/i/app-icon72x72@2x.png}">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-    <script src="assets/js/echarts.min.js"></script>
-    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
-    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.datatables.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}"/>
     <script src="assets/js/jquery.min.js"></script>
-
+    <script src="assets/js/echarts.min.js"></script>
 </head>
 
 <body data-type="index">
@@ -416,12 +414,10 @@
                     </div>
 
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-8 widget-margin-bottom-lg">
-
                         <div class="widget am-cf widget-body-lg">
-
                             <div class="widget-body  am-fr">
                                 <div class="am-scrollable-horizontal ">
-                                    <table width="100%" class="am-table am-table-compact am-text-nowrap tpl-table-black " id="example-r">
+                                    <table width="100%" class="am-table am-table-compact am-text-nowrap tpl-table-black " id="example-r" ng-controller="myIndexController">
                                         <thead>
                                             <tr>
                                                 <th>文章标题</th>
@@ -430,9 +426,9 @@
                                                 <th>操作</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody th:each="user : ${userList}">
                                             <tr class="gradeX">
-                                                <td>新加坡大数据初创公司 Latize 获 150 万美元风险融资</td>
+                                                <td th:text="${user.username}">新加坡大数据初创公司 Latize 获 150 万美元风险融资</td>
                                                 <td>张鹏飞</td>
                                                 <td>2016-09-26</td>
                                                 <td>
@@ -446,68 +442,67 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr class="even gradeC">
-                                                <td>自拍的“政治角色”：观众背对希拉里自拍合影表示“支持”</td>
-                                                <td>天纵之人</td>
-                                                <td>2016-09-26</td>
-                                                <td>
-                                                    <div class="tpl-table-black-operation">
-                                                        <a href="javascript:;">
-                                                            <i class="am-icon-pencil"></i> 编辑
-                                                        </a>
-                                                        <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                            <i class="am-icon-trash"></i> 删除
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="gradeX">
-                                                <td>关于创新管理，我想和你当面聊聊。</td>
-                                                <td>王宽师</td>
-                                                <td>2016-09-26</td>
-                                                <td>
-                                                    <div class="tpl-table-black-operation">
-                                                        <a href="javascript:;">
-                                                            <i class="am-icon-pencil"></i> 编辑
-                                                        </a>
-                                                        <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                            <i class="am-icon-trash"></i> 删除
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="even gradeC">
-                                                <td>究竟是趋势带动投资，还是投资引领趋势？</td>
-                                                <td>着迷</td>
-                                                <td>2016-09-26</td>
-                                                <td>
-                                                    <div class="tpl-table-black-operation">
-                                                        <a href="javascript:;">
-                                                            <i class="am-icon-pencil"></i> 编辑
-                                                        </a>
-                                                        <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                            <i class="am-icon-trash"></i> 删除
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr class="even gradeC">
-                                                <td>Docker领域再添一员，网易云发布“蜂巢”，加入云计算之争</td>
-                                                <td>醉里挑灯看键</td>
-                                                <td>2016-09-26</td>
-                                                <td>
-                                                    <div class="tpl-table-black-operation">
-                                                        <a href="javascript:;">
-                                                            <i class="am-icon-pencil"></i> 编辑
-                                                        </a>
-                                                        <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                            <i class="am-icon-trash"></i> 删除
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
 
-
+                                            <!--<tr class="even gradeC">-->
+                                                <!--<td>自拍的“政治角色”：观众背对希拉里自拍合影表示“支持”</td>-->
+                                                <!--<td>天纵之人</td>-->
+                                                <!--<td>2016-09-26</td>-->
+                                                <!--<td>-->
+                                                    <!--<div class="tpl-table-black-operation">-->
+                                                        <!--<a href="javascript:;">-->
+                                                            <!--<i class="am-icon-pencil"></i> 编辑-->
+                                                        <!--</a>-->
+                                                        <!--<a href="javascript:;" class="tpl-table-black-operation-del">-->
+                                                            <!--<i class="am-icon-trash"></i> 删除-->
+                                                        <!--</a>-->
+                                                    <!--</div>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                            <!--<tr class="gradeX">-->
+                                                <!--<td>关于创新管理，我想和你当面聊聊。</td>-->
+                                                <!--<td>王宽师</td>-->
+                                                <!--<td>2016-09-26</td>-->
+                                                <!--<td>-->
+                                                    <!--<div class="tpl-table-black-operation">-->
+                                                        <!--<a href="javascript:;">-->
+                                                            <!--<i class="am-icon-pencil"></i> 编辑-->
+                                                        <!--</a>-->
+                                                        <!--<a href="javascript:;" class="tpl-table-black-operation-del">-->
+                                                            <!--<i class="am-icon-trash"></i> 删除-->
+                                                        <!--</a>-->
+                                                    <!--</div>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                            <!--<tr class="even gradeC">-->
+                                                <!--<td>究竟是趋势带动投资，还是投资引领趋势？</td>-->
+                                                <!--<td>着迷</td>-->
+                                                <!--<td>2016-09-26</td>-->
+                                                <!--<td>-->
+                                                    <!--<div class="tpl-table-black-operation">-->
+                                                        <!--<a href="javascript:;">-->
+                                                            <!--<i class="am-icon-pencil"></i> 编辑-->
+                                                        <!--</a>-->
+                                                        <!--<a href="javascript:;" class="tpl-table-black-operation-del">-->
+                                                            <!--<i class="am-icon-trash"></i> 删除-->
+                                                        <!--</a>-->
+                                                    <!--</div>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                            <!--<tr class="even gradeC">-->
+                                                <!--<td>Docker领域再添一员，网易云发布“蜂巢”，加入云计算之争</td>-->
+                                                <!--<td>醉里挑灯看键</td>-->
+                                                <!--<td>2016-09-26</td>-->
+                                                <!--<td>-->
+                                                    <!--<div class="tpl-table-black-operation">-->
+                                                        <!--<a href="javascript:;">-->
+                                                            <!--<i class="am-icon-pencil"></i> 编辑-->
+                                                        <!--</a>-->
+                                                        <!--<a href="javascript:;" class="tpl-table-black-operation-del">-->
+                                                            <!--<i class="am-icon-trash"></i> 删除-->
+                                                        <!--</a>-->
+                                                    <!--</div>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
                                             <!-- more data -->
                                         </tbody>
                                     </table>
@@ -525,6 +520,12 @@
     <script src="assets/js/amazeui.datatables.min.js"></script>
     <script src="assets/js/dataTables.responsive.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/angular.js"></script>
+    <script>
+        angular.module('myIndexModule',[]).controller('myIndexController',function () {
+            
+        });
+    </script>
 
 </body>
 
