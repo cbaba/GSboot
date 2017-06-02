@@ -49,8 +49,8 @@ public class HelloController {
 //    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private DataSource dataSource;
+//    @Autowired
+//    private DataSource dataSource;
 
 
 
@@ -97,7 +97,7 @@ public class HelloController {
     public String loginForm() throws SQLException {
         User user = new User();
         user.setUsername("龚涛");
-        System.out.print(dataSource.getConnection().toString());
+//        System.out.print(dataSource.getConnection().toString());
         return "index";
     }
 }
